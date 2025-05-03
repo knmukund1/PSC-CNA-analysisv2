@@ -1,0 +1,125 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling", "hatch-vcs"]
+
+[project]
+name = "pscanalysis"
+dynamic = ["version"]
+description = "PSCAnalysis is a scalable Python library to infer copy number variation (CNV) events from single-cell transcriptomics data. Inspired by inferCNV, but optimized for scanpy workflows and scalability."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Krishna Mukunda"},
+]
+maintainers = [
+    {name = "Krishna Mukunda", email = "kmukund1@jhu.edu"},
+]
+contributors = [
+    {name = "Krishna Mukunda", email = "kmukund1@jhu.edu"},
+]
+urls = {
+    "Documentation" = "https://infercnvpy.readthedocs.io/",
+    "Source" = "https://github.com/icbi-lab/infercnvpy",
+    "Home-page" = "https://github.com/icbi-lab/infercnvpy"
+}
+dependencies = [
+    "anndata>=0.7.3",
+    "scanpy>=1.10",
+    "pandas>=1",
+    "numpy>=1.20",
+    "tqdm>=4.63.0",
+    "pytoml",
+    'pycairo>=1.20; sys_platform == "win32"',
+    "leidenalg",
+    "pyreadr",
+    "pytest-benchmark",
+    "session-info",
+    "pybiomart>=0.2.0",
+]
+
+[project.optional-dependencies]
+gtf = [
+    "gtfparse>=2.1"
+]
+copykat = [
+    "rpy2"
+]
+dev = [
+    "pre-commit"
+]
+doc = [
+    "docutils>=0.8,!=0.18.*,!=0.19.*",
+    "sphinx>=4.2",
+    "sphinx-book-theme>=1.0.0",
+    "myst-nb>=1.1.0",
+    "sphinxcontrib-bibtex>=1.0.0",
+    "sphinx-autodoc-typehints",
+    "sphinxext-opengraph",
+    "ipykernel",
+    "sphinx-copybutton",
+    "pycairo",
+    "jupyter_client",
+    "pandas",
+    "setuptools"
+]
+test = [
+    "pytest",
+    "coverage",
+    "openpyxl"
+]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.coverage.run]
+source = ["pscanalysis"]
+omit = [
+    "**/test_*.py",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+xfail_strict = true
+addopts = ["--import-mode=importlib"]
+filterwarnings = []
+
+[tool.ruff]
+src = ["src"]
+line-length = 120
+extend-include = ["*.ipynb"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = [
+    "F", "E", "W", "I", "D", "B", "TID", "C4", "BLE", "UP", "RUF100"
+]
+ignore = [
+    "E501", "E731", "E741",
+    "D104", "D100", "D107", "B008", "D105", "D400", "D401", "D203", "D213"
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.per-file-ignores]
+"docs/*" = ["I"]
+"tests/*" = ["D"]
+"*/__init__.py" = ["F401"]
+
+[tool.cruft]
+skip = [
+    "tests",
+    "src/**/__init__.py",
+    "src/**/basic.py",
+    "docs/api.md",
+    "docs/changelog.md",
+    "docs/references.bib",
+    "docs/references.md",
+    "docs/notebooks/example.ipynb"
+]
+
+[tool.uv.sources]
+gtfparse = { git = "https://github.com/lrauschning/gtfparse.git", rev = "dev" }
