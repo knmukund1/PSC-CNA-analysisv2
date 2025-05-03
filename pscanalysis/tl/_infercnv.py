@@ -12,7 +12,7 @@ from scanpy import logging
 from tqdm.auto import tqdm
 from tqdm.contrib.concurrent import process_map
 
-from infercnvpy._util import _ensure_array
+from pscanalysis._util import _ensure_array
 
 
 
