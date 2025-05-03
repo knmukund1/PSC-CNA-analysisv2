@@ -4,5 +4,5 @@ from importlib.metadata import version
 
 from . import tl
 
-__all__ = ["tl"]
+__all__ = ["tl", "infercnv"]
 __version__ = version("pscanalysis")
