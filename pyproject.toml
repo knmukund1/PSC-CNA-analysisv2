@@ -18,11 +18,11 @@ maintainers = [
 contributors = [
     {name = "Krishna Mukunda", email = "kmukund1@jhu.edu"},
 ]
-urls = {
-    "Documentation" = "https://infercnvpy.readthedocs.io/",
-    "Source" = "https://github.com/icbi-lab/infercnvpy",
-    "Home-page" = "https://github.com/icbi-lab/infercnvpy"
-}
+[project.urls]
+Documentation = "https://infercnvpy.readthedocs.io/"
+Source = "https://github.com/icbi-lab/infercnvpy"
+Home-page = "https://github.com/icbi-lab/infercnvpy"
+
 dependencies = [
     "anndata>=0.7.3",
     "scanpy>=1.10",
