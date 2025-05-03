@@ -18,11 +18,6 @@ maintainers = [
 contributors = [
     {name = "Krishna Mukunda", email = "kmukund1@jhu.edu"},
 ]
-[project.urls]
-Documentation = "https://infercnvpy.readthedocs.io/"
-Source = "https://github.com/icbi-lab/infercnvpy"
-Home-page = "https://github.com/icbi-lab/infercnvpy"
-
 dependencies = [
     "anndata>=0.7.3",
     "scanpy>=1.10",
@@ -37,6 +32,11 @@ dependencies = [
     "session-info",
     "pybiomart>=0.2.0",
 ]
+
+[project.urls]
+Documentation = "https://infercnvpy.readthedocs.io/"
+Source = "https://github.com/icbi-lab/infercnvpy"
+Home-page = "https://github.com/icbi-lab/infercnvpy"
 
 [project.optional-dependencies]
 gtf = [
